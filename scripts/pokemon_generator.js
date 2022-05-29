@@ -4,6 +4,9 @@ function output(element) {
     let pokemon = document.createElement("article")
     let pokemonName = document.createElement("h3")
     pokemonName.innerHTML = element.name
+    if (pokemonName == "eevee"){
+        pokemonName = "The Best Pokemon"
+    }
     pokemonName.innerHTML = "Name: " + pokemonName.innerHTML.charAt(0).toUpperCase() + pokemonName.innerHTML.slice(1)
     let pokemonId = document.createElement("h4")
     pokemonId.innerHTML = "ID: " + element.id
@@ -19,6 +22,7 @@ function output(element) {
 
 async function get_pokemon(input) {
     input = document.getElementById("input_pokemon").value
+    input = input.toLowerCase()
     let url = `https://pokeapi.co/api/v2/pokemon/${input}`
     let response = await fetch(url)
     pokemon = await response.json()
